@@ -128,17 +128,17 @@
                                         <span>40</span>
                                     </div>
                                 </div>
-                                <div class="speed-stats">
-                                    <div class="stat">
-                                        <span class="stat-label">Avg</span>
+                                    <div class="speed-stats">
+                                        <div class="stat">
+                                            <span class="stat-label">Avg</span>
                                         <span class="stat-value">18.5 km/h</span>
-                                    </div>
-                                    <div class="stat">
-                                        <span class="stat-label">Max</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Max</span>
                                         <span class="stat-value">35.0 km/h</span>
-                                    </div>
-                                    <div class="stat">
-                                        <span class="stat-label">Trip</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Trip</span>
                                         <span class="stat-value">12.4 km</span>
                                     </div>
                                 </div>
@@ -167,4 +167,63 @@
         </main>
     </div>
 </body>
+    <script>
+    // Select necessary elements
+    const speedDisplay = document.querySelector(".current-speed");
+    const gaugeFill = document.querySelector(".gauge-fill");
+    const avgSpeedDisplay = document.querySelector(".speed-stats .stat:nth-child(1) .stat-value");
+    const maxSpeedDisplay = document.querySelector(".speed-stats .stat:nth-child(2) .stat-value");
+    const tripDistanceDisplay = document.querySelector(".speed-stats .stat:nth-child(3) .stat-value");
+
+    // Initialize tracking variables
+    let speedReadings = [];
+    let maxSpeed = 0;
+    let lastUpdateTime = Date.now();
+    let totalDistance = 0;
+
+    // Function to simulate real-time speed (Replace with actual sensor/GPS data)
+    function getRealTimeSpeed() {
+        // Simulating speed data (replace with actual GPS or sensor input)
+        return Math.random() * 40; // Random speed between 0-40 km/h
+    }
+
+    function updateSpeedometer(speed) {
+        // Ensure speed stays within 0 to 40 km/h
+        speed = Math.max(0, Math.min(40, speed));
+
+        // Update current speed display
+        speedDisplay.textContent = speed.toFixed(1);
+
+        // Update tracking metrics
+        speedReadings.push(speed);
+        if (speedReadings.length > 60) speedReadings.shift(); // Keep last minute of readings
+        
+        // Update max speed
+        maxSpeed = Math.max(maxSpeed, speed);
+        
+        // Calculate average speed
+        const avgSpeed = speedReadings.reduce((a, b) => a + b, 0) / speedReadings.length;
+        
+        // Calculate distance covered since last update
+        const currentTime = Date.now();
+        const timeDiff = (currentTime - lastUpdateTime) / 3600000; // Convert to hours
+        totalDistance += (speed * timeDiff); // Distance = speed * time
+        lastUpdateTime = currentTime;
+
+        // Update displays
+        avgSpeedDisplay.textContent = `${avgSpeed.toFixed(1)} km/h`;
+        maxSpeedDisplay.textContent = `${maxSpeed.toFixed(1)} km/h`;
+        tripDistanceDisplay.textContent = `${totalDistance.toFixed(1)} km`;
+
+        // Update the gauge fill rotation
+        const rotationDegrees = (speed / 40) * 180; // Convert speed to degrees (180 = half circle)
+        gaugeFill.style.transform = `rotate(${rotationDegrees}deg)`;
+    }
+
+    // Real-time speed update every second
+    setInterval(() => {
+        let speed = getRealTimeSpeed(); // Get new speed value
+        updateSpeedometer(speed);
+    }, 1000);
+    </script>
 </html>

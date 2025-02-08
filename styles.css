@@ -127,7 +127,7 @@ body {
 .sos-button {
     padding: 1rem 2rem;
     background: var(--danger-color);
-    color: var(--accent-color);
+    color: white;
     border: none;
     border-radius: var(--border-radius);
     display: flex;
@@ -319,14 +319,13 @@ body {
 .gauge {
     position: relative;
     padding: 1rem;
-    transform: scale(0.9);
     margin: -10px 0;
 }
 
 .gauge-body {
-    position: relative;
     width: 200px;
     height: 100px;
+    position: relative;
     margin: 0 auto;
     background: var(--card-background-lighter);
     border-radius: 100px 100px 0 0;
@@ -336,29 +335,28 @@ body {
 .gauge-fill {
     position: absolute;
     top: 100%;
-    left: 0;
-    width: inherit;
-    height: inherit;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    transform-origin: center bottom;
-    transform: rotate(calc(var(--speed-percent, 56.25) * 1.8deg)); /* 56.25% of 180 degrees */
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    transform-origin: 50% 0;
+    transform: rotate(0deg);
+    background: var(--primary-color);
     transition: transform 0.5s ease-out;
 }
 
 .gauge-cover {
-    position: absolute;
-    width: 75%;
-    height: 75%;
+    width: 160px;
+    height: 80px;
     background: var(--card-background);
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    border-radius: 80px 80px 0 0;
+    position: absolute;
+    top: 10px;
+    left: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 -3px 6px rgba(0,0,0,0.2) inset;
 }
 
 .current-speed {
@@ -377,9 +375,10 @@ body {
 .speed-labels {
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 2rem;
     color: var(--text-secondary);
     font-size: 0.875rem;
+    margin-top: 0.5rem;
 }
 
 .speed-stats {

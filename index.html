@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,10 +9,10 @@
 <body>
     <div class="container">
         <!-- Sidebar -->
-        <div class="sidebar">
+        <aside class="sidebar">
             <div class="logo">
-                <img src="/api/placeholder/40/40" alt="Bicykle Logo">
-                BICYKLE
+                <div class="logo-icon">B</div>
+                <span>BICYKLE</span>
             </div>
             <nav class="nav-menu">
                 <div class="nav-item active">
@@ -36,46 +35,44 @@
                     <span>📁</span>
                     Archive
                 </div>
-                <div class="nav-item" >
+                <div class="nav-item">
                     <span>⚙️</span>
                     Settings
                 </div>
             </nav>
             <div class="user-profile">
-                <img src="/api/placeholder/40/40" alt="User Profile">
-                <div>
-                    <div>John Wilson</div>
-                    <small>Admin</small>
+                <div class="user-avatar"></div>
+                <div class="user-info">
+                    <div class="user-name">John Wilson</div>
+                    <div class="user-role">Admin</div>
                 </div>
             </div>
-        </div>
+        </aside>
 
         <!-- Main Content -->
-        <div class="main-content">
-            <div class="header">
-                <div class="search-bar">
-                    <span>🔍</span>
-                    <input type="text" placeholder="Search">
+        <main class="main-content">
+            <header class="header">
+                <div class="alert-message">
+                <span class="alert-icon">⚠️</span>
+                    <div class="msg">
+                        You are on a terrain!
+                    </div>
                 </div>
-                <div class="location">
-                    <span>📍</span>
-                    Green Street 2, Middle of the Center
+                <div class="sos">
+                    <button class="sos-button">
+                        SOS
+                    </button>
                 </div>
-            </div>
+            </header>
 
-            <div class="category-tabs">
-                <div class="tab active">Bicycles</div>
-                <div class="tab">Scooters</div>
-                <div class="tab">Gyroscope</div>
-            </div>
-            
-            <div class="left-section">
-                <div class="bikes-grid">
-                    <div class="stats-container">
-                        <div class="calories">
-                            <div>
-                                <div class="calories-number">2390</div>
-                                <div class="calories-label">Calories Burnt!</div>
+            <div class="dashboard">
+                <div class="left-section">
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stats-card calories">
+                            <div class="stats-content">
+                                <div class="stats-number">2,390</div>
+                                <div class="stats-label">Calories Burnt!</div>
                             </div>
                             <div class="dots">
                                 <div class="dot"></div>
@@ -84,135 +81,132 @@
                                 <div class="dot"></div>
                                 <div class="dot"></div>
                             </div>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="heartbeat">
-                            <div class="heart-container">
-                                <div class="heart-fill"></div>
-                                <div class="heart-icon">♥</div>
+                            <div class="stats-card heartrate">
+                                <div class="heart-container">
+                                    <div class="heart-icon">♥</div>
+                                </div>
+                                <div class="bpm">89 <span>bpm</span></div>
                             </div>
-                            <div class="heart-rate">89<small>bpm</small></div>
-                        </div>       
-                    </div>
+                        </div>
 
-                    <div class="bike-card purple-bg">
-                        <div class="speedometer-container">
-                            <div class="header">
+                        <div class="speed-tracker">
+                            <div class = "svg-title">
                                 <h1>Speed Tracking</h1>
-                                <div class="stats">
-                                    <div class="stat">
-                                        <div>Average Speed</div>
-                                        <div class="stat-value">18.5 km/h</div>
+                                <svg class="speedometer" viewBox="0 0 200 120">
+                                    <!-- Background track -->
+                                    <path 
+                                        d="M10,110 A90,90 0 0,1 190,110" 
+                                        fill="none" 
+                                        stroke="#eee" 
+                                        stroke-width="4"
+                                    />
+                                        
+                                    <!-- Speed indicator -->
+                                    <path 
+                                        d="M10,110 A90,90 0 0,1 150,30" 
+                                        fill="none" 
+                                        stroke="#4CAF50" 
+                                        stroke-width="4"
+                                        stroke-linecap="round"
+                                        />
+                                        
+                                    <!-- Tick marks -->
+                                    <g id="ticks">
+                                        <line x1="10" y1="110" x2="15" y2="105" stroke="#ccc" />
+                                        <line x1="50" y1="80" x2="55" y2="75" stroke="#ccc" />
+                                        <line x1="100" y1="60" x2="105" y2="55" stroke="#ccc" />
+                                        <line x1="150" y1="80" x2="155" y2="75" stroke="#ccc" />
+                                        <line x1="190" y1="110" x2="185" y2="105" stroke="#ccc" />
+                                    </g>
+                                        
+                                    <!-- Speed labels -->
+                                    <text x="5" y="120" fill="#666" font-size="12">0</text>
+                                    <text x="95" y="50" fill="#666" font-size="12">20</text>
+                                    <text x="185" y="120" fill="#666" font-size="12">40</text>
+                                </svg>
+    
+                                    <div class="current-speed">
+                                        22.5 <span class="speed-unit">km/h</span>
                                     </div>
-                                    <div class="stat">
-                                        <div>Max Speed</div>
-                                        <div class="stat-value">35 km/h</div>
-                                    </div>
-                                    <div class="stat">
-                                        <div>Distance</div>
-                                        <div class="stat-value">12.4 km</div>
-                                    </div>
+                            </div>
+
+
+                            <div class="stat-info">
+                                <div class="stat">
+                                    <div>Average Speed</div>
+                                    <div class="stat-value">18.5 km/h</div>
+                                </div>
+                                <div class="stat">
+                                    <div>Max Speed</div>
+                                    <div class="stat-value">35 km/h</div>
+                                </div>
+                                <div class="stat">
+                                    <div>Distance</div>
+                                    <div class="stat-value">12.4 km</div>
                                 </div>
                             </div>
-                            
-                            <svg class="speedometer" viewBox="0 0 200 120">
-                                <!-- Background track -->
-                                <path 
-                                    d="M10,110 A90,90 0 0,1 190,110" 
-                                    fill="none" 
-                                    stroke="#eee" 
-                                    stroke-width="4"
-                                />
-                                
-                                <!-- Speed indicator -->
-                                <path 
-                                    d="M10,110 A90,90 0 0,1 150,30" 
-                                    fill="none" 
-                                    stroke="#4CAF50" 
-                                    stroke-width="4"
-                                    stroke-linecap="round"
-                                />
-                                
-                                <!-- Tick marks -->
-                                <g id="ticks">
-                                    <line x1="10" y1="110" x2="15" y2="105" stroke="#ccc" />
-                                    <line x1="50" y1="80" x2="55" y2="75" stroke="#ccc" />
-                                    <line x1="100" y1="60" x2="105" y2="55" stroke="#ccc" />
-                                    <line x1="150" y1="80" x2="155" y2="75" stroke="#ccc" />
-                                    <line x1="190" y1="110" x2="185" y2="105" stroke="#ccc" />
-                                </g>
-                                
-                                <!-- Speed labels -->
-                                <text x="5" y="120" fill="#666" font-size="12">0</text>
-                                <text x="95" y="50" fill="#666" font-size="12">20</text>
-                                <text x="185" y="120" fill="#666" font-size="12">40</text>
-                            </svg>
-                            
-                            <div class="current-speed">
-                                22.5 <span class="speed-unit">km/h</span>
-                            </div>
                         </div>
+                    </div>    
+
+                    <!-- Map Section -->
+                    <div class="map-section">
+                        <!-- Map placeholder -->
                     </div>
                 </div>
 
-                <div class="map-section">
-                    <!-- Map placeholder -->
-                </div>
-            </div>
+                <div class="right-section">
+                    <!-- Camera Card -->
+                    <div class="camera-card">
+                        <div class="card-header">
+                            <h3>Live Camera Feed</h3>
+                            <span class="status-badge">Live</span>
+                        </div>
+                        <div class="camera-feed">
+                            <div class="feed-placeholder"></div>
+                            <div class="camera-controls">
+                                <button class="control-btn">📷</button>
+                                <button class="control-btn">⏺️</button>
+                                <button class="control-btn">🔄</button>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="right-section">
-                <!-- Camera Card -->
-                <div class="camera-card">
-                    <div class="card-header">
-                        <h3>Live Camera Feed</h3>
-                        <span class="status-badge">Live</span>
-                    </div>
-                    <div class="camera-feed">
-                        <img src="/api/placeholder/320/180" alt="Camera Feed">
-                        <div class="camera-controls">
-                            <button class="control-btn">📷</button>
-                            <button class="control-btn">⏺️</button>
-                            <button class="control-btn">🔄</button>
+                    <!-- Vehicle Status -->
+                    <div class="status-card">
+                        <div class="card-header">
+                            <h3>Vehicle Status</h3>
+                            <span class="view-all">View All</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Vehicle Status Card -->
-                <div class="status-card">
-                    <div class="card-header">
-                        <h3>Vehicle Status</h3>
-                        <span class="view-all">View All</span>
-                    </div>
-                    <div class="status-list">
-                        <div class="status-item">
-                            <div class="status-icon">🚲</div>
-                            <div class="status-info">
-                                <div class="status-title">Bike #2234</div>
-                                <div class="status-details">Battery: 85% | In Use</div>
+                        <div class="status-list">
+                            <div class="status-item">
+                                <span class="vehicle-icon">🚲</span>
+                                <div class="status-info">
+                                    <div class="vehicle-id">Bike #2234</div>
+                                    <div class="vehicle-status">Battery: 85% | In Use</div>
+                                </div>
+                                <div class="status-indicator active"></div>
                             </div>
-                            <div class="status-indicator active"></div>
-                        </div>
-                        <div class="status-item">
-                            <div class="status-icon">🛴</div>
-                            <div class="status-info">
-                                <div class="status-title">Scooter #1182</div>
-                                <div class="status-details">Battery: 62% | Available</div>
+                            <div class="status-item">
+                                <span class="vehicle-icon">🛴</span>
+                                <div class="status-info">
+                                    <div class="vehicle-id">Scooter #1182</div>
+                                    <div class="vehicle-status">Battery: 62% | Available</div>
+                                </div>
+                                <div class="status-indicator"></div>
                             </div>
-                            <div class="status-indicator"></div>
-                        </div>
-                        <div class="status-item">
-                            <div class="status-icon">🚲</div>
-                            <div class="status-info">
-                                <div class="status-title">Bike #2235</div>
-                                <div class="status-details">Battery: 13% | Maintenance</div>
+                            <div class="status-item">
+                                <span class="vehicle-icon">🚲</span>
+                                <div class="status-info">
+                                    <div class="vehicle-id">Bike #2235</div>
+                                    <div class="vehicle-status">Battery: 13% | Maintenance</div>
+                                </div>
+                                <div class="status-indicator warning"></div>
                             </div>
-                            <div class="status-indicator warning"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
